@@ -1,0 +1,26 @@
+body > div.ember-view:last-child {
+    margin-bottom: 100px;
+}
+
+h5 {
+    margin: 10px 0;
+}
+
+pre {
+    margin: 0;
+    padding: 10px;
+    background-color: #CCC;
+}
+
+.cb {
+    clear: both;
+}
+
+.docColumn {
+    float: left;
+    width: 400px;
+}
+
+.exampleColumn {
+    margin-left: 410px;
+}
