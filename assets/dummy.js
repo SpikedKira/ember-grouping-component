@@ -161,7 +161,7 @@ define('dummy/templates/application', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 4,
+            "line": 6,
             "column": 0
           }
         },
@@ -174,7 +174,14 @@ define('dummy/templates/application', ['exports'], function (exports) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("h2");
         dom.setAttribute(el1,"id","title");
-        var el2 = dom.createTextNode("Ember-Grouping-Component");
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("a");
+        dom.setAttribute(el2,"href","https://github.com/SpikedKira/ember-grouping-component");
+        var el3 = dom.createTextNode("Ember-Grouping-Component");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
@@ -191,7 +198,7 @@ define('dummy/templates/application', ['exports'], function (exports) {
         return morphs;
       },
       statements: [
-        ["content","outlet",["loc",[null,[3,0],[3,10]]]]
+        ["content","outlet",["loc",[null,[5,0],[5,10]]]]
       ],
       locals: [],
       templates: []
@@ -858,7 +865,7 @@ catch(err) {
 if (runningTests) {
   require("dummy/tests/test-helper");
 } else {
-  require("dummy/app")["default"].create({"name":"ember-grouping-component","version":"0.0.0+c39f5cbb"});
+  require("dummy/app")["default"].create({"name":"ember-grouping-component","version":"0.0.1+c39f5cbb"});
 }
 
 /* jshint ignore:end */
