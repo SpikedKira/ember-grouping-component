@@ -18,11 +18,13 @@
                 \{{item}}
             \{{/if}}
         &lt;/td&gt;
+    \{{else}}
+        &lt;td&gt;empty&lt;/td&gt;
     \{{/groups-of}}
 &lt;/table&gt;</pre>
 
     <h5>Controller</h5>
-<pre>tableData: [ 1, 2, 3, 4, 5, 6 ]</pre>
+<pre>tableData: [ 1, 2, 3, 4, 5, 6, 7 ]</pre>
 </div>
 
 <div class='exampleColumn'>
@@ -37,6 +39,8 @@
                     {{item}}
                 {{/if}}
             </td>
+        {{else}}
+            <td>empty</td>
         {{/groups-of}}
     </table>
 </div>

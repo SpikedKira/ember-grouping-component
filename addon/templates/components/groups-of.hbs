@@ -2,10 +2,22 @@
     {{#each items as |item index|}}
         {{yield item}}
     {{/each}}
+
+    {{#each remainderItems as |item index|}}
+        {{yield item to="inverse"}}
+    {{/each}}
 {{else}}
     {{#each groups as |group|}}
-        {{#groups-of items=group tagName=groupTag groupsOf=0 as |item|}}
-            {{yield item.item item.isFirst item.isLast}}
-        {{/groups-of}}
+        {{#if group.isLastGroup}}
+            {{#groups-of items=group.items tagName=groupTag groupsOf=0 remainderItems=remainders as |item|}}
+                {{yield item.item item.isFirst item.isLast}}
+            {{else}}
+                {{yield item.item to="inverse"}}
+            {{/groups-of}}
+        {{else}}
+            {{#groups-of items=group.items tagName=groupTag groupsOf=0 as |item|}}
+                {{yield item.item item.isFirst item.isLast}}
+            {{/groups-of}}
+        {{/if}}
     {{/each}}
 {{/unless}}
