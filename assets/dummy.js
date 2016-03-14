@@ -58,7 +58,7 @@ define('dummy/controllers/index', ['exports', 'ember'], function (exports, Ember
 
     exports['default'] = Ember['default'].Controller.extend({
 
-        tableData: [1, 2, 3, 4, 5, 6]
+        tableData: [1, 2, 3, 4, 5, 6, 7]
 
     });
 
@@ -77,7 +77,7 @@ define('dummy/ember-grouping-component/tests/modules/ember-grouping-component/co
   QUnit.module('JSHint - modules/ember-grouping-component/components');
   QUnit.test('modules/ember-grouping-component/components/groups-of.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'modules/ember-grouping-component/components/groups-of.js should pass jshint.\nmodules/ember-grouping-component/components/groups-of.js: line 28, col 22, Confusing use of \'!\'.\nmodules/ember-grouping-component/components/groups-of.js: line 34, col 54, Expected \'===\' and instead saw \'==\'.\n\n2 errors');
+    assert.ok(false, 'modules/ember-grouping-component/components/groups-of.js should pass jshint.\nmodules/ember-grouping-component/components/groups-of.js: line 31, col 22, Confusing use of \'!\'.\nmodules/ember-grouping-component/components/groups-of.js: line 35, col 57, Expected \'===\' and instead saw \'==\'.\nmodules/ember-grouping-component/components/groups-of.js: line 45, col 54, Expected \'===\' and instead saw \'==\'.\nmodules/ember-grouping-component/components/groups-of.js: line 75, col 36, Expected \'===\' and instead saw \'==\'.\n\n4 errors');
   });
 
 });
@@ -212,11 +212,11 @@ define('dummy/templates/index', ['exports'], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 32,
+                "line": 34,
                 "column": 16
               },
               "end": {
-                "line": 34,
+                "line": 36,
                 "column": 16
               }
             },
@@ -241,7 +241,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
             return morphs;
           },
           statements: [
-            ["content","item",["loc",[null,[33,21],[33,29]]]]
+            ["content","item",["loc",[null,[35,21],[35,29]]]]
           ],
           locals: [],
           templates: []
@@ -255,11 +255,11 @@ define('dummy/templates/index', ['exports'], function (exports) {
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 34,
+                  "line": 36,
                   "column": 16
                 },
                 "end": {
-                  "line": 36,
+                  "line": 38,
                   "column": 16
                 }
               },
@@ -284,7 +284,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
               return morphs;
             },
             statements: [
-              ["content","item",["loc",[null,[35,21],[35,29]]]]
+              ["content","item",["loc",[null,[37,21],[37,29]]]]
             ],
             locals: [],
             templates: []
@@ -297,11 +297,11 @@ define('dummy/templates/index', ['exports'], function (exports) {
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 36,
+                  "line": 38,
                   "column": 16
                 },
                 "end": {
-                  "line": 38,
+                  "line": 40,
                   "column": 16
                 }
               },
@@ -326,7 +326,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
               return morphs;
             },
             statements: [
-              ["content","item",["loc",[null,[37,20],[37,28]]]]
+              ["content","item",["loc",[null,[39,20],[39,28]]]]
             ],
             locals: [],
             templates: []
@@ -338,11 +338,11 @@ define('dummy/templates/index', ['exports'], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 34,
+                "line": 36,
                 "column": 16
               },
               "end": {
-                "line": 38,
+                "line": 40,
                 "column": 16
               }
             },
@@ -365,7 +365,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
             return morphs;
           },
           statements: [
-            ["block","if",[["get","isLast",["loc",[null,[34,26],[34,32]]]]],[],0,1,["loc",[null,[34,16],[38,16]]]]
+            ["block","if",[["get","isLast",["loc",[null,[36,26],[36,32]]]]],[],0,1,["loc",[null,[36,16],[40,16]]]]
           ],
           locals: [],
           templates: [child0, child1]
@@ -377,11 +377,11 @@ define('dummy/templates/index', ['exports'], function (exports) {
           "loc": {
             "source": null,
             "start": {
-              "line": 30,
+              "line": 32,
               "column": 8
             },
             "end": {
-              "line": 40,
+              "line": 42,
               "column": 8
             }
           },
@@ -412,10 +412,50 @@ define('dummy/templates/index', ['exports'], function (exports) {
           return morphs;
         },
         statements: [
-          ["block","if",[["get","isFirst",["loc",[null,[32,22],[32,29]]]]],[],0,1,["loc",[null,[32,16],[38,23]]]]
+          ["block","if",[["get","isFirst",["loc",[null,[34,22],[34,29]]]]],[],0,1,["loc",[null,[34,16],[40,23]]]]
         ],
         locals: ["item","isFirst","isLast"],
         templates: [child0, child1]
+      };
+    }());
+    var child1 = (function() {
+      return {
+        meta: {
+          "revision": "Ember@1.13.7",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 42,
+              "column": 8
+            },
+            "end": {
+              "line": 44,
+              "column": 8
+            }
+          },
+          "moduleName": "dummy/templates/index.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("td");
+          var el2 = dom.createTextNode("empty");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() { return []; },
+        statements: [
+
+        ],
+        locals: [],
+        templates: []
       };
     }());
     return {
@@ -428,7 +468,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 46,
+            "line": 50,
             "column": 0
           }
         },
@@ -474,6 +514,8 @@ define('dummy/templates/index', ['exports'], function (exports) {
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("{{/if}}\n        </td>\n    ");
         dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("{{else}}\n        <td>empty</td>\n    ");
+        dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("{{/groups-of}}\n</table>");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
@@ -486,7 +528,7 @@ define('dummy/templates/index', ['exports'], function (exports) {
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("pre");
-        var el3 = dom.createTextNode("tableData: [ 1, 2, 3, 4, 5, 6 ]");
+        var el3 = dom.createTextNode("tableData: [ 1, 2, 3, 4, 5, 6, 7 ]");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
@@ -526,10 +568,10 @@ define('dummy/templates/index', ['exports'], function (exports) {
         return morphs;
       },
       statements: [
-        ["block","groups-of",[],["tagName","tbody","groupsOf",3,"groupTag","tr","items",["subexpr","@mut",[["get","tableData",["loc",[null,[30,68],[30,77]]]]],[],[]]],0,null,["loc",[null,[30,8],[40,22]]]]
+        ["block","groups-of",[],["tagName","tbody","groupsOf",3,"groupTag","tr","items",["subexpr","@mut",[["get","tableData",["loc",[null,[32,68],[32,77]]]]],[],[]]],0,1,["loc",[null,[32,8],[44,22]]]]
       ],
       locals: [],
-      templates: [child0]
+      templates: [child0, child1]
     };
   }()));
 
@@ -816,7 +858,7 @@ catch(err) {
 if (runningTests) {
   require("dummy/tests/test-helper");
 } else {
-  require("dummy/app")["default"].create({"name":"ember-grouping-component","version":"0.0.0+81ae2ffc"});
+  require("dummy/app")["default"].create({"name":"ember-grouping-component","version":"0.0.0+c39f5cbb"});
 }
 
 /* jshint ignore:end */

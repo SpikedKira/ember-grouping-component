@@ -69931,7 +69931,9 @@ define('ember-grouping-component/components/groups-of', ['exports', 'ember', 'em
 
         items: Ember['default'].A(),
 
-        groups: Ember['default'].computed('items', function () {
+        remainderItems: Ember['default'].A(),
+
+        groups: Ember['default'].computed('groupsOf', 'items', function () {
             var items = this.get('items');
             var groupsOf = this.get('groupsOf');
 
@@ -69945,7 +69947,15 @@ define('ember-grouping-component/components/groups-of', ['exports', 'ember', 'em
             items.forEach(function (item, index) {
                 if (!(index % groupsOf)) {
                     currentGroup = Ember['default'].A();
-                    groups.push(currentGroup);
+
+                    var isFirstGroup = !!groups.length;
+                    var isLastGroup = groups.length == parseInt(items.length / groupsOf);
+
+                    groups.push({
+                        items: currentGroup,
+                        isFirstGroup: isFirstGroup,
+                        isLastGroup: isLastGroup
+                    });
                 }
 
                 var isFirst = !currentGroup.length;
@@ -69959,6 +69969,27 @@ define('ember-grouping-component/components/groups-of', ['exports', 'ember', 'em
             });
 
             return groups;
+        }),
+
+        remainders: Ember['default'].computed('groupsOf', 'items', function () {
+            var items = this.get('items');
+            var groupsOf = this.get('groupsOf');
+
+            if (!groupsOf) {
+                return;
+            }
+
+            var remainder = Ember['default'].A();
+            var remainderCount = groupsOf - items.length % groupsOf;
+
+            for (var item = 0; item < remainderCount; item++) {
+                remainder.push({
+                    item: item,
+                    isLast: item == remainderCount - 1
+                });
+            }
+
+            return remainder;
         })
 
     });
@@ -70012,6 +70043,48 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
           templates: []
         };
       }());
+      var child1 = (function() {
+        return {
+          meta: {
+            "revision": "Ember@1.13.7",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 6,
+                "column": 4
+              },
+              "end": {
+                "line": 8,
+                "column": 4
+              }
+            },
+            "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
+          },
+          arity: 2,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
+            return morphs;
+          },
+          statements: [
+            ["inline","yield",[["get","item",["loc",[null,[7,16],[7,20]]]]],["to","inverse"],["loc",[null,[7,8],[7,35]]]]
+          ],
+          locals: ["item","index"],
+          templates: []
+        };
+      }());
       return {
         meta: {
           "revision": "Ember@1.13.7",
@@ -70022,7 +70095,7 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
               "column": 0
             },
             "end": {
-              "line": 5,
+              "line": 9,
               "column": 0
             }
           },
@@ -70035,64 +70108,234 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createComment("");
           dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
+          var morphs = new Array(2);
           morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
+          morphs[1] = dom.createMorphAt(fragment,2,2,contextualElement);
           dom.insertBoundary(fragment, 0);
           dom.insertBoundary(fragment, null);
           return morphs;
         },
         statements: [
-          ["block","each",[["get","items",["loc",[null,[2,12],[2,17]]]]],[],0,null,["loc",[null,[2,4],[4,13]]]]
+          ["block","each",[["get","items",["loc",[null,[2,12],[2,17]]]]],[],0,null,["loc",[null,[2,4],[4,13]]]],
+          ["block","each",[["get","remainderItems",["loc",[null,[6,12],[6,26]]]]],[],1,null,["loc",[null,[6,4],[8,13]]]]
         ],
         locals: [],
-        templates: [child0]
+        templates: [child0, child1]
       };
     }());
     var child1 = (function() {
       var child0 = (function() {
         var child0 = (function() {
+          var child0 = (function() {
+            return {
+              meta: {
+                "revision": "Ember@1.13.7",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 12,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 12
+                  }
+                },
+                "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
+              },
+              arity: 1,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("                ");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createComment("");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createTextNode("\n");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+                var morphs = new Array(1);
+                morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
+                return morphs;
+              },
+              statements: [
+                ["inline","yield",[["get","item.item",["loc",[null,[13,24],[13,33]]]],["get","item.isFirst",["loc",[null,[13,34],[13,46]]]],["get","item.isLast",["loc",[null,[13,47],[13,58]]]]],[],["loc",[null,[13,16],[13,60]]]]
+              ],
+              locals: ["item"],
+              templates: []
+            };
+          }());
+          var child1 = (function() {
+            return {
+              meta: {
+                "revision": "Ember@1.13.7",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 14,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 12
+                  }
+                },
+                "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
+              },
+              arity: 0,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("                ");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createComment("");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createTextNode("\n");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+                var morphs = new Array(1);
+                morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
+                return morphs;
+              },
+              statements: [
+                ["inline","yield",[["get","item.item",["loc",[null,[15,24],[15,33]]]]],["to","inverse"],["loc",[null,[15,16],[15,48]]]]
+              ],
+              locals: [],
+              templates: []
+            };
+          }());
           return {
             meta: {
               "revision": "Ember@1.13.7",
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 7,
+                  "line": 11,
                   "column": 8
                 },
                 "end": {
-                  "line": 9,
+                  "line": 17,
                   "column": 8
                 }
               },
               "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
             },
-            arity: 1,
+            arity: 0,
             cachedFragment: null,
             hasRendered: false,
             buildFragment: function buildFragment(dom) {
               var el0 = dom.createDocumentFragment();
-              var el1 = dom.createTextNode("            ");
-              dom.appendChild(el0, el1);
               var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n");
               dom.appendChild(el0, el1);
               return el0;
             },
             buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
               var morphs = new Array(1);
-              morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
+              morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
+              dom.insertBoundary(fragment, 0);
+              dom.insertBoundary(fragment, null);
               return morphs;
             },
             statements: [
-              ["inline","yield",[["get","item.item",["loc",[null,[8,20],[8,29]]]],["get","item.isFirst",["loc",[null,[8,30],[8,42]]]],["get","item.isLast",["loc",[null,[8,43],[8,54]]]]],[],["loc",[null,[8,12],[8,56]]]]
+              ["block","groups-of",[],["items",["subexpr","@mut",[["get","group.items",["loc",[null,[12,31],[12,42]]]]],[],[]],"tagName",["subexpr","@mut",[["get","groupTag",["loc",[null,[12,51],[12,59]]]]],[],[]],"groupsOf",0,"remainderItems",["subexpr","@mut",[["get","remainders",["loc",[null,[12,86],[12,96]]]]],[],[]]],0,1,["loc",[null,[12,12],[16,26]]]]
             ],
-            locals: ["item"],
-            templates: []
+            locals: [],
+            templates: [child0, child1]
+          };
+        }());
+        var child1 = (function() {
+          var child0 = (function() {
+            return {
+              meta: {
+                "revision": "Ember@1.13.7",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 18,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 12
+                  }
+                },
+                "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
+              },
+              arity: 1,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("                ");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createComment("");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createTextNode("\n");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+                var morphs = new Array(1);
+                morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
+                return morphs;
+              },
+              statements: [
+                ["inline","yield",[["get","item.item",["loc",[null,[19,24],[19,33]]]],["get","item.isFirst",["loc",[null,[19,34],[19,46]]]],["get","item.isLast",["loc",[null,[19,47],[19,58]]]]],[],["loc",[null,[19,16],[19,60]]]]
+              ],
+              locals: ["item"],
+              templates: []
+            };
+          }());
+          return {
+            meta: {
+              "revision": "Ember@1.13.7",
+              "loc": {
+                "source": null,
+                "start": {
+                  "line": 17,
+                  "column": 8
+                },
+                "end": {
+                  "line": 21,
+                  "column": 8
+                }
+              },
+              "moduleName": "modules/ember-grouping-component/templates/components/groups-of.hbs"
+            },
+            arity: 0,
+            cachedFragment: null,
+            hasRendered: false,
+            buildFragment: function buildFragment(dom) {
+              var el0 = dom.createDocumentFragment();
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              return el0;
+            },
+            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+              var morphs = new Array(1);
+              morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
+              dom.insertBoundary(fragment, 0);
+              dom.insertBoundary(fragment, null);
+              return morphs;
+            },
+            statements: [
+              ["block","groups-of",[],["items",["subexpr","@mut",[["get","group.items",["loc",[null,[18,31],[18,42]]]]],[],[]],"tagName",["subexpr","@mut",[["get","groupTag",["loc",[null,[18,51],[18,59]]]]],[],[]],"groupsOf",0],0,null,["loc",[null,[18,12],[20,26]]]]
+            ],
+            locals: [],
+            templates: [child0]
           };
         }());
         return {
@@ -70101,11 +70344,11 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
             "loc": {
               "source": null,
               "start": {
-                "line": 6,
+                "line": 10,
                 "column": 4
               },
               "end": {
-                "line": 10,
+                "line": 22,
                 "column": 4
               }
             },
@@ -70128,10 +70371,10 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
             return morphs;
           },
           statements: [
-            ["block","groups-of",[],["items",["subexpr","@mut",[["get","group",["loc",[null,[7,27],[7,32]]]]],[],[]],"tagName",["subexpr","@mut",[["get","groupTag",["loc",[null,[7,41],[7,49]]]]],[],[]],"groupsOf",0],0,null,["loc",[null,[7,8],[9,22]]]]
+            ["block","if",[["get","group.isLastGroup",["loc",[null,[11,14],[11,31]]]]],[],0,1,["loc",[null,[11,8],[21,15]]]]
           ],
           locals: ["group"],
-          templates: [child0]
+          templates: [child0, child1]
         };
       }());
       return {
@@ -70140,11 +70383,11 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
           "loc": {
             "source": null,
             "start": {
-              "line": 5,
+              "line": 9,
               "column": 0
             },
             "end": {
-              "line": 11,
+              "line": 23,
               "column": 0
             }
           },
@@ -70167,7 +70410,7 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
           return morphs;
         },
         statements: [
-          ["block","each",[["get","groups",["loc",[null,[6,12],[6,18]]]]],[],0,null,["loc",[null,[6,4],[10,13]]]]
+          ["block","each",[["get","groups",["loc",[null,[10,12],[10,18]]]]],[],0,null,["loc",[null,[10,4],[22,13]]]]
         ],
         locals: [],
         templates: [child0]
@@ -70183,7 +70426,7 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
             "column": 0
           },
           "end": {
-            "line": 12,
+            "line": 24,
             "column": 0
           }
         },
@@ -70206,7 +70449,7 @@ define('ember-grouping-component/templates/components/groups-of', ['exports'], f
         return morphs;
       },
       statements: [
-        ["block","unless",[["get","groupsOf",["loc",[null,[1,10],[1,18]]]]],[],0,1,["loc",[null,[1,0],[11,11]]]]
+        ["block","unless",[["get","groupsOf",["loc",[null,[1,10],[1,18]]]]],[],0,1,["loc",[null,[1,0],[23,11]]]]
       ],
       locals: [],
       templates: [child0, child1]
